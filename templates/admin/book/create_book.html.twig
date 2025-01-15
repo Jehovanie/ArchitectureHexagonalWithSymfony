@@ -1,0 +1,62 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}
+	Book Virtual: Administration
+{% endblock %}
+
+{% block body %}
+	<div class="row" style="height:80vh">
+		<div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-auto">
+			<div class="card mt-5">
+				<div class="card-header">
+					<h4 class="font-weight-bolder">Ajouter une nouvelle book</h4>
+				</div>
+				<div class="card-body">
+					{{ form_start( form , { 'attr' : { 'role' : 'form'}})}}
+					<div class="input-group input-group-outline mb-3">
+						{{ form_label(form.title , null, {'label_attr': {'class': 'form-label'}}) }}
+						{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<div class="input-group input-group-outline mb-3">
+						{{ form_label(form.description , null, {'label_attr': {'class': 'form-label'}}) }}
+						{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<div class="input-group input-group-outline mb-3">
+						{{ form_label(form.author , null, {'label_attr': {'class': 'form-label'}}) }}
+						{{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<div class="input-group input-group-outline mb-3">
+						{{ form_label(form.createdAt , null, {'label_attr': {'class': 'form-label'}}) }}
+						{{ form_widget(form.createdAt, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<div class="input-group input-group-outline mb-3">
+						{{ form_label(form.language , null, {'label_attr': {'class': 'form-label'}}) }}
+						{{ form_widget(form.language, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="input-group input-group-outline mb-3">
+								{{ form_label(form.page , null, {'label_attr': {'class': 'form-label'}}) }}
+								{{ form_widget(form.page, {'attr': {'class': 'form-control'}}) }}
+							</div>
+						</div>
+						<div class="col">
+							<div class="input-group input-group-outline mb-3">
+								{{ form_label(form.version , null, {'label_attr': {'class': 'form-label'}}) }}
+								{{ form_widget(form.version, {'attr': {'class': 'form-control'}}) }}
+							</div>
+						</div>
+					</div>
+
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-lg bg-gradient-dark btn-lg w-100 mt-4 mb-0">
+							Envoyer
+						</button>
+					</div>
+					{{form_end(form)}}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

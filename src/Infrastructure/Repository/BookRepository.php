@@ -9,6 +9,7 @@ use App\Domain\Repository\BookRepositoryInterface;
 use App\Infrastructure\Entity\Book as BookEntity;
 use App\Infrastructure\Mapper\BookMapper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,12 +18,17 @@ use Doctrine\Persistence\ManagerRegistry;
 class BookRepository extends ServiceEntityRepository implements BookRepositoryInterface
 {
     public $bookMapper;
+    public $entityManager;
 
-    public function __construct(ManagerRegistry $registry, BookMapper $bookMapper)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        BookMapper $bookMapper,
+        EntityManagerInterface $entityManagerInterface
+    ) {
         parent::__construct($registry, BookEntity::class);
 
         $this->bookMapper = $bookMapper;
+        $this->entityManager = $entityManagerInterface;
     }
 
     public function findById(int $id): ?BookModel
@@ -32,12 +38,26 @@ class BookRepository extends ServiceEntityRepository implements BookRepositoryIn
         return $this->bookMapper->toModel($book_entity);
     }
 
-    public function saveBook(BookModel $bookModel): void
+    public function saveBook(BookModel $bookModel): BookModel
     {
         $book_entity = $this->bookMapper->toEntity($bookModel);
 
         $this->entityManager->persist($book_entity);
         $this->entityManager->flush();
+
+        return $this->bookMapper->toModel($book_entity);
+    }
+
+    /**
+     * @return BookModel[]
+     */
+    public function findAllBook(): array
+    {
+        $book_entities = $this->findAll();
+
+        return array_map(function (BookEntity $book_entity) {
+            return $this->bookMapper->toModel($book_entity);
+        }, $book_entities);
     }
 
     //    /**

@@ -8,9 +8,12 @@ use App\Domain\Model\Book as BookModel;
 
 interface BookRepositoryInterface
 {
-    public function findAll(): array;
+    /**
+     * @return BookModel[]
+     */
+    public function findAllBook(): array;
 
     public function findById(int $id): ?BookModel;
 
-    public function saveBook(BookModel $bookModel): void;
+    public function saveBook(BookModel $bookModel): BookModel;
 }
