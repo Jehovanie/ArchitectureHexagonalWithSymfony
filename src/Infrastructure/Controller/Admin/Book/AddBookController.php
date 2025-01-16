@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/admin', name: 'app.admin.book.')]
 class AddBookController extends AbstractController
 {
-    #[Route("/create/book", name: 'create', methods: ['GET', 'POST'])]
+    #[Route('/create/book', name: 'create', methods: ['GET', 'POST'])]
     public function appAdminCreateBook(
         Request $request,
         AddBookService $addBookService
