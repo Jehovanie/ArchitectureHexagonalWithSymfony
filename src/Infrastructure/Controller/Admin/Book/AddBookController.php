@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Controller\Admin;
+namespace App\Infrastructure\Controller\Admin\Book;
 
 use App\Application\DTO\BookDTO;
 use App\Application\Service\Book\AddBookService;
@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/admin', name: 'app.admin.')]
+#[Route('/admin', name: 'app.admin.book.')]
 class AddBookController extends AbstractController
 {
-    #[Route('/create/book', name: 'create.book', methods: ['GET', 'POST'])]
+    #[Route("/create/book", name: 'create', methods: ['GET', 'POST'])]
     public function appAdminCreateBook(
         Request $request,
         AddBookService $addBookService
@@ -34,7 +34,7 @@ class AddBookController extends AbstractController
             $addBookService->execute($bookDTO);
 
             // Rediriger ou afficher un message de succès
-            return $this->redirectToRoute('app.admin.home');
+            return $this->redirectToRoute('app.admin.book.collection');
         }
 
 

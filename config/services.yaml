@@ -30,5 +30,6 @@ services:
     App\Application\EventListener\BookDeleteListener:
         tags:
             - { name: 'kernel.event_listener', event: 'App\Domain\Event\BookDeleteEvent' }
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+
+    App\Twig\AppExtension:
+        tags: ['twig.extension']

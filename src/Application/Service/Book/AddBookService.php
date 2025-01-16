@@ -23,7 +23,7 @@ class AddBookService
     public function execute(BookDTO $bookDTO): void
     {
         $book = new BookModel(
-            id: null, 
+            id: null,
             title: $bookDTO->title,
             description : $bookDTO->description,
             page : $bookDTO->page,

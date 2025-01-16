@@ -1,0 +1,44 @@
+<tr>
+	<td class="text-center">
+		{{book.id}}
+	</td>
+	<td class="text-center">
+		<h6>
+			{{book.title |truncate(30)}}
+		</h6>
+	</td>
+	<td class="text-center">
+		<p>{{ book.description|truncate(30) }}</p>
+	</td>
+	<td class="text-center">
+		{{ book.author }}
+	</td>
+	<td class="text-center" class="align-middle text-center">
+		<span class="text-secondary text-xs font-weight-bold">
+			{{ book.createdAt|date("m/d/Y") }}
+		</span>
+	</td>
+	<td class="text-center">
+		{{ book.language }}
+	</td>
+	<td class="text-center">
+		{{ book.page }}
+	</td>
+	<td class="align-middle text-center">
+		<span class="text-secondary text-xs font-weight-bold">
+			{{ book.uploadedAt|date("m/d/Y") }}
+		</span>
+	</td>
+	<td class="align-middle text-center text-sm">
+		{% if item is same as true %}
+			<span class="badge badge-sm bg-gradient-success">Online</span>
+		{% else %}
+			<span class="badge badge-sm bg-gradient-secondary">Offline</span>
+		{% endif %}
+	</td>
+	<td class="align-middle">
+		<a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+			Edit
+		</a>
+	</td>
+</tr>
