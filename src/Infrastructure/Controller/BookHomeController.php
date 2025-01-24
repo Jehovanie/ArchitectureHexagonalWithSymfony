@@ -19,7 +19,7 @@ class BookHomeController extends AbstractController
 
         $all_books = $getBookCollectionService->execute();
 
-        return $this->render('book_home/index.html.twig', [
+        return $this->render('public/book/index.html.twig', [
             'all_books' => $all_books,
         ]);
     }
