@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Controller;
+namespace App\Infrastructure\Controller\Public\Book;
 
 use App\Application\Service\Book\GetBookCollectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,10 +17,10 @@ class BookHomeController extends AbstractController
         GetBookCollectionService $getBookCollectionService
     ): Response {
 
-        $all_books = $getBookCollectionService->execute();
+        $books = $getBookCollectionService->execute();
 
         return $this->render('public/book/index.html.twig', [
-            'all_books' => $all_books,
+            'books' => $books,
         ]);
     }
 }

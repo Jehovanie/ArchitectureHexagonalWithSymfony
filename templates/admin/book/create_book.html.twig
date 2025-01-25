@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="row" style="height:80vh">
-		<div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-auto">
+	<div class="row">
+		<div class="col-xl-8 col-md-8 d-flex flex-column mx-auto">
 			<div class="card mt-5">
 				<div class="card-header">
 					<h4 class="font-weight-bolder">Ajouter une nouvelle book</h4>
@@ -17,17 +17,18 @@
 						{{ form_label(form.title , null, {'label_attr': {'class': 'form-label'}}) }}
 						{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
 					</div>
-					<div class="input-group input-group-outline mb-3">
-						{{ form_label(form.description , null, {'label_attr': {'class': 'form-label'}}) }}
+					<div
+						class="input-group input-group-outline mb-3">
+						{# {{ form_label(form.description , null, {'label_attr': {'class': 'form-label'}}) }} #}
 						{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
 					</div>
 					<div class="input-group input-group-outline mb-3">
 						{{ form_label(form.author , null, {'label_attr': {'class': 'form-label'}}) }}
 						{{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
 					</div>
-					<div class="input-group input-group-outline mb-3">
+					<div class="input-group input-group-outline mb-3 focused">
 						{{ form_label(form.createdAt , null, {'label_attr': {'class': 'form-label'}}) }}
-						{{ form_widget(form.createdAt, {'attr': {'class': 'form-control'}}) }}
+						{{ form_widget(form.createdAt, {'attr': {'class': 'form-control', 'data-mdb-input-init' : ''}}) }}
 					</div>
 					<div class="input-group input-group-outline mb-3">
 						{{ form_label(form.language , null, {'label_attr': {'class': 'form-label'}}) }}

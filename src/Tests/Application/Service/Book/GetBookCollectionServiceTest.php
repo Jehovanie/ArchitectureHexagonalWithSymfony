@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Application\Service;
 
 use App\Application\Service\Book\GetBookCollectionService;
-use App\Domain\Repository\BookRepositoryInterface;
+use App\Domain\Repository\Book\BookRepositoryInterface;
 use PHPUnit\Framework\TestCase;
 
 class GetBookCollectionServiceTest extends TestCase

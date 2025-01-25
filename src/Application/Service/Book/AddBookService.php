@@ -7,7 +7,7 @@ namespace App\Application\Service\Book;
 use App\Application\DTO\BookDTO;
 use App\Domain\Event\BookCreatedEvent;
 use App\Domain\Model\Book as BookModel;
-use App\Domain\Repository\BookRepositoryInterface;
+use App\Domain\Repository\Book\BookRepositoryInterface;
 use App\Infrastructure\Mapper\BookMapper;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
@@ -36,7 +36,7 @@ class AddBookService
 
         $new_book = $this->bookRepository->saveBook($book);
 
-        $this->pushNotificationCreateBook($new_book);
+        // $this->pushNotificationCreateBook($new_book);
     }
 
     public function pushNotificationCreateBook(BookModel $new_book)

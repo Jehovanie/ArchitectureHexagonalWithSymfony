@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Entity;
 
-use App\Infrastructure\Repository\BookRepository;
+use App\Infrastructure\Repository\Book\BookRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 

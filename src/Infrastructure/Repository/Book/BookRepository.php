@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Repository;
+namespace App\Infrastructure\Repository\Book;
 
 use App\Domain\Model\Book as BookModel;
-use App\Domain\Repository\BookRepositoryInterface;
+use App\Domain\Repository\Book\BookRepositoryInterface;
 use App\Infrastructure\Entity\Book as BookEntity;
 use App\Infrastructure\Mapper\BookMapper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -33,7 +33,11 @@ class BookRepository extends ServiceEntityRepository implements BookRepositoryIn
 
     public function findById(int $id): ?BookModel
     {
-        $book_entity = $this->find(BookEntity::class, $id);
+        $book_entity = $this->find($id);
+
+        if (!$book_entity) {
+            return null;
+        }
 
         return $this->bookMapper->toModel($book_entity);
     }

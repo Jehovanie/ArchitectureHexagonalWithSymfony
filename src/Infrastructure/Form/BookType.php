@@ -24,11 +24,12 @@ class BookType extends AbstractType
                 'label' => 'Votre nom de livre',
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description de votre livre',
+                'label' => null,
                 'required' => true,
                 'attr' => [
                     'rows' => 10, // Nombre de lignes
                     'cols' => 50, // Nombre de colonnes (optionnel)
+                    'placeholder' => 'Description de votre livre',
                 ],
             ])
             ->add('page', IntegerType::class, [
@@ -51,7 +52,6 @@ class BookType extends AbstractType
                 'label' => 'Date de sortie',
                 'widget' => 'single_text',
                 'required' => false,
-                'label' => '',
             ])
             ->addEventListener(FormEvents::POST_SUBMIT, $this->attacheTimestamps(...));
 

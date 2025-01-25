@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Repository;
+namespace App\Domain\Repository\Book;
 
 use App\Domain\Model\Book as BookModel;
 
@@ -15,5 +15,5 @@ interface BookRepositoryInterface
 
     public function findById(int $id): ?BookModel;
 
-    public function saveBook(BookModel $bookModel): BookModel;
+    public function saveBook(BookModel $bookModel): ?BookModel;
 }
