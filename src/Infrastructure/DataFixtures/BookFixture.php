@@ -15,9 +15,9 @@ class BookFixture extends Fixture
     {
         $faker = Factory::create(); // Utilisation de Faker pour générer des données aléatoires
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $book = new Book();
-            
+
             $book->setTitle($faker->sentence(3)); // Génère un titre aléatoire
             $book->setDescription($faker->paragraph(5)); // Génère une description aléatoire
             $book->setPage($faker->numberBetween(50, 500)); // Génère un nombre aléatoire de pages

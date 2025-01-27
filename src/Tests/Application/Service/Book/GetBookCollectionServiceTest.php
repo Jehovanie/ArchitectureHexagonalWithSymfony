@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Application\Service;
+namespace App\Tests\Application\Service\Book;
 
 use App\Application\Service\Book\GetBookCollectionService;
 use App\Domain\Repository\Book\BookRepositoryInterface;

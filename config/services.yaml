@@ -20,16 +20,21 @@ services:
             - "../src/Entity/"
             - "../src/Kernel.php"
 
-    App\Domain\Repository\BookRepositoryInterface:
-        alias: App\Infrastructure\Repository\BookRepository
+    App\Domain\Repository\Book\BookRepositoryInterface:
+        alias: App\Infrastructure\Repository\Book\BookRepository
+        public: false
+
+    App\Domain\Repository\Book\BookCommentRepositoryInterface:
+        alias: App\Infrastructure\Repository\Book\BookCommentRepository
         public: false
 
     App\Application\EventListener\BookCreatedListener:
         tags:
-            - { name: 'kernel.event_listener', event: 'App\Domain\Event\BookCreatedEvent' }
+            - { name: "kernel.event_listener", event: 'App\Domain\Event\BookCreatedEvent' }
+
     App\Application\EventListener\BookDeleteListener:
         tags:
-            - { name: 'kernel.event_listener', event: 'App\Domain\Event\BookDeleteEvent' }
+            - { name: "kernel.event_listener", event: 'App\Domain\Event\BookDeleteEvent' }
 
     App\Twig\AppExtension:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]

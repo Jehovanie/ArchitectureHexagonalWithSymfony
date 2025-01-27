@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Infrastructure\Entity;
 
 use App\Infrastructure\Repository\Book\BookRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -39,6 +41,17 @@ class Book
 
     #[ORM\Column(length: 50)]
     private ?string $language = null;
+
+    /**
+     * @var Collection<int, BookComment>
+     */
+    #[ORM\OneToMany(targetEntity: BookComment::class, mappedBy: 'bookId', orphanRemoval: true)]
+    private Collection $bookComments;
+
+    public function __construct()
+    {
+        $this->bookComments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +150,36 @@ class Book
     public function setLanguage(string $language): static
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, BookComment>
+     */
+    public function getBookComments(): Collection
+    {
+        return $this->bookComments;
+    }
+
+    public function addBookComment(BookComment $bookComment): static
+    {
+        if (!$this->bookComments->contains($bookComment)) {
+            $this->bookComments->add($bookComment);
+            $bookComment->setBookId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBookComment(BookComment $bookComment): static
+    {
+        if ($this->bookComments->removeElement($bookComment)) {
+            // set the owning side to null (unless already changed)
+            if ($bookComment->getBookId() === $this) {
+                $bookComment->setBookId(null);
+            }
+        }
 
         return $this;
     }

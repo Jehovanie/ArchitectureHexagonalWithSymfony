@@ -1,0 +1,12 @@
+{{ form_start( form , { 'attr' : { 'role' : 'form'}})}}
+	<div class="mb-3">
+		{{ form_label(form.author , null, {'label_attr': {'class': 'form-label'}}) }}
+		{{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+	</div>
+	<div class="form-floating mb-2">
+		{{ form_widget(form.comment, {'attr': {'class': 'form-control'}}) }}
+		{{ form_label(form.comment , "Commentaire", {'label_attr': {'class': 'floatingTextarea'}}) }}
+	</div>
+
+	<button type="submit" class="btn btn-primary">Envoyer</button>
+{{form_end(form)}}
